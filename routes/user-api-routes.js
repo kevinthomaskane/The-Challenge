@@ -27,12 +27,11 @@ module.exports = function(app){
             username: req.body.username
           }
         }).then((data) => {
-          console.log("found a user");
           res.json(data);
         }).catch((error) => {
           res.send("login or password incorrect");
-        })
-      })
+        });
+      });
     });
-    
+
 };
