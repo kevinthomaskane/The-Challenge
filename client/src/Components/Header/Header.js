@@ -20,7 +20,7 @@ class Header extends React.Component {
           <Row className="show-grid">
               <Col md={4}></Col>
               <Col md={4}>The Challenge</Col>
-              <Col md={2}>Sign In</Col>
+              <Col md={2}><Link to="/login">Sign In</Link></Col>
               <Col md={2}><Link to="/SignUp">Sign Up</Link></Col>
           </Row>
         </Grid>

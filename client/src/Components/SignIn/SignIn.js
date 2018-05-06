@@ -6,7 +6,6 @@ import {Grid, Row, Col} from "react-bootstrap";
 class SignUp extends React.Component {
 
   state = {
-    name: "",
     username: "",
     password: ""
   }
@@ -22,7 +21,8 @@ class SignUp extends React.Component {
   }
 
   handleSubmit = () => {
-    axios.post("/api/newUser", {name: this.state.name, username: this.state.username, password: this.state.password}).then((response) => {
+    let token = "t"+Math.random();
+    axios.post("/api/login", {token: token, username: this.state.username, password: this.state.password}).then((response) => {
       console.log(response);
     });
   };
@@ -33,13 +33,9 @@ class SignUp extends React.Component {
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-6">
-              <p>What is your full name?</p>
-              <input onChange={this.handleInputChange} type="text" name="name"/>
-              <p>Username?</p>
-              <input onChange={this.handleInputChange} type="text" name="username"/>
-              <p>Password?</p>
-              <input onChange={this.handleInputChange} type="text" name="password"/><br/>
-              <button onClick={this.handleSubmit}>Sign Up</button>
+              <input onChange={this.handleInputChange} type="text" placeholder="username" name="username"/><br/>
+              <input onChange={this.handleInputChange} type="text" placeholder="password" name="password"/>
+              <button onClick={this.handleSubmit}>Sign In</button>
           </div>
           <div className="col-md-3"></div>
         </div>

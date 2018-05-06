@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Components/Header";
 import SignUp from "./Components/SignUp";
+import SignIn from "./Components/SignIn";
 
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
           <Header/>
             <Switch>
               <Route exact path="/SignUp" component={SignUp} />
+              <Route exact path="/login" component={SignIn} />
             </Switch>
         </div>
       </Router>
