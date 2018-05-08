@@ -7,7 +7,7 @@ import Landing from "../Landing";
 class Header extends React.Component {
 
   state = {
-    loggedIn: false
+    userInfo: {}
   }
 
   componentDidMount = () => {

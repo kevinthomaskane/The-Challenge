@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./Components/Header";
 import SignUp from "./Components/SignUp";
 import SignIn from "./Components/SignIn";
+import Main from "./Pages/Main";
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/SignUp" component={SignUp} />
               <Route exact path="/login" component={SignIn} />
+              <Route exact path="/main/:id" component={Main} />
             </Switch>
         </div>
       </Router>
