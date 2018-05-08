@@ -34,6 +34,18 @@ module.exports = function(sequelize, DataTypes){
     }
 
   });
+  
+  User.associate = function(models) {
+    const Challenge = models.Challenge
+    User.belongsToMany(Challenge, {
+      through: models.UserChallenge,
+      foreignKey: {
+        name: "userId",
+        allowNull: false
+      }
+    });
+
+  };
 
   return User;
 

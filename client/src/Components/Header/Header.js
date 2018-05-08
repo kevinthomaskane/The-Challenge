@@ -34,7 +34,6 @@ class Header extends React.Component {
               <Col md={2}><Link to="/SignUp">Sign Up</Link></Col>
           </Row>
         </Grid>
-        <Landing/>
         </div>
       )
     } else {

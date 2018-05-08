@@ -2,58 +2,38 @@ import React from "react";
 import axios from "axios";
 import {Grid, Row, Col} from "react-bootstrap";
 import {BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
-import Landing from "../Landing";
 
-class Header extends React.Component {
+var userId = localStorage.getItem("userId");
+
+class Main extends React.Component {
 
   state = {
     userInfo: {}
   }
 
   componentDidMount = () => {
-    if (localStorage.getItem("username")){
-      this.setState({loggedIn: true});
-    }
-  }
+    axios.get("/api/userInfo/" + userId).then((response) => {
+      console.log(response)
+    });
+  };
 
-  logOut = () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("userId");
-    this.setState({loggedIn: false});
-  }
+  getChallenge = () => {
+    axios.get("/api/currentChallenge/" + userId).then((response) => {
+      
+    });
+  };
 
   render(){
-    if (!this.state.loggedIn){
-      return (
-        <div>
-        <Grid>
-          <Row className="show-grid">
-              <Col md={4}></Col>
-              <Col md={4}>The Challenge</Col>
-              <Col md={2}><Link to="/login">Sign In</Link></Col>
-              <Col md={2}><Link to="/SignUp">Sign Up</Link></Col>
-          </Row>
-        </Grid>
-        <Landing/>
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3">Your Challenge this week: </div>
         </div>
-      )
-    } else {
-      return (
-      <Grid>
-          <Row className="show-grid">
-              <Col md={4}></Col>
-              <Col md={4}>The Challenge</Col>
-              <Col md={2}>Welcome {localStorage.getItem("username")}</Col>
-              <Col md={2}><a onClick={() => {
-                this.logOut();
-              }}>Log Out</a></Col>
-          </Row>
-        </Grid>
-      )
-    }
+      </div>
+    )
   }
 
 
 };
 
-export default Header;
+export default Main;

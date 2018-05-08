@@ -20,7 +20,7 @@ class SignIn extends React.Component {
   }
 
   checkLogin = () => {
-    this.props.history.push('/SignUp');
+    this.props.history.push("/main/" + localStorage.getItem("userId"));
   }
 
   handleSubmit = () => {
